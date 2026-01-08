@@ -1,11 +1,13 @@
-import { Module } from "@nestjs/common";
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
-import { RxjsModule } from "./rxjs/rxjs.module";
+import { Module } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
+import { GithubController } from './github/github.controller';
+import { GithubService } from './github/github.service';
+import { GitlabController } from './gitlab/gitlab.controller';
+import { GitlabService } from './gitlab/gitlab.service';
 
 @Module({
-  imports: [RxjsModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [HttpModule],
+  controllers: [GithubController, GitlabController],
+  providers: [GithubService, GitlabService],
 })
 export class AppModule {}
